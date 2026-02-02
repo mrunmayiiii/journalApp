@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://mrunmayik1220:manu192012@aws-deployment.7ddappq.mongodb.net/?appName=aws-deployment
+      uri: 
       database: dbspringboot
       auto-index-creation: true
 
