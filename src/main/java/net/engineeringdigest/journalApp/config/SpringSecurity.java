@@ -1,5 +1,6 @@
 package net.engineeringdigest.journalApp.config;
 
+import net.engineeringdigest.journalApp.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -19,15 +21,19 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
    @Autowired
    private UserDetailsService userDetailsService;
 
+    @Autowired
+    private JwtFilter jwtFilter;
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/journal/**","/user/**").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
-                .and()
-                .httpBasic();
+                .anyRequest().permitAll();
+
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 

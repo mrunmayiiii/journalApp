@@ -13,17 +13,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 @Slf4j
 public class UserService {
 
     @Autowired
     private UserEntryRepo UserRepo;
+
+
 
   //  private static final Logger logger= LoggerFactory.getLogger(UserService.class);
 
@@ -42,11 +45,11 @@ public class UserService {
           return true;
 
       }catch (Exception e){
-          log.info("hahahahahahahah");
-          log.error("error");
-          log.warn("warn");
-          log.debug("debug");
-          log.trace("hahahahahahahah");
+//          log.info("hahahahahahahah");
+//          log.error("error");
+//          log.warn("warn");
+//          log.debug("debug");
+//          log.trace("hahahahahahahah");
 
 
      return false;

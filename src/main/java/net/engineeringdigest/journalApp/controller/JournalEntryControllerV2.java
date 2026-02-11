@@ -34,6 +34,7 @@ public class JournalEntryControllerV2
     public ResponseEntity<?>getAllJournalEntriesofUser(){
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
         String userName=authentication.getName();
+
         User user=userService.findByUserName(userName);
         List<JournalEntry>all=user.getJournalEntries();
         if(all!=null && !all.isEmpty()){
@@ -50,10 +51,14 @@ public class JournalEntryControllerV2
        try{
            Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
            String userName=authentication.getName();
+           System.out.println("USERNAME = " + userName);
+
            journalEntryService.saveEntry(myEntry,userName);
            return new ResponseEntity<>(myEntry, HttpStatus.OK);
 
        } catch (Exception e) {
+           e.printStackTrace();
+
            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
 
        }
