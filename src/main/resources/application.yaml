@@ -8,15 +8,15 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://mrunmayik1220:manu192012@aws-deployment.7ddappq.mongodb.net/?appName=aws-deployment
+      uri: 
       database: dbspringboot
       auto-index-creation: true
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username : mrunmayik1920@gmail.com
-    password : dbqt nrmk ujvk qcji
+    username : 
+    password :
     properties:
       mail:
         smtp:
@@ -32,7 +32,7 @@ server:
 
 weather:
   api:
-    key: 2c5bf5290868e12e04e1fa90676f7425
+    key: 
 
 
 logging:
